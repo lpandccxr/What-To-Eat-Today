@@ -90,11 +90,23 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ### Auth
 
-Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
+**GET /food**
+
+**POST /food**
+
+**PUT /food**
+
+### Auth
+
+- JWT auth
 
 ## Roadmap
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
+- Create server
+    - express project with routing, with placeholder 200 responses
+
+- Create client
+    - react project with routes and boilerplate pages
 
 ## Nice-to-haves
 
