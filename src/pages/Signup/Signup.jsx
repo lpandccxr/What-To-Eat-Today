@@ -71,6 +71,7 @@ export default function Signup() {
       shortUser ||
       !goodPw
     ) {
+      setLoading(false);
       return alert("Please correct your input information");
     }
     try {

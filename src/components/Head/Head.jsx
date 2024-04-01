@@ -1,10 +1,20 @@
 import logo from "../../assets/logo/logo.png";
 import "./Head.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Head({ status, setStatus }) {
-  const handleClick = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
     setStatus(false);
+    sessionStorage.removeItem("JWTtoken");
+  };
+  const handleLogin = async () => {
+    const token = sessionStorage.getItem("JWTtoken");
+    if (!token) {
+      navigate("/login");
+    } else {
+      setStatus(true);
+    }
   };
   return (
     <>
@@ -22,13 +32,13 @@ export default function Head({ status, setStatus }) {
           <img src={logo} alt="WTET" className="navbar__logo-img" />
         </Link>
         {status ? (
-          <h3 className="navbar__link" onClick={handleClick}>
+          <h3 className="navbar__link" onClick={handleLogout}>
             LOG OUT
           </h3>
         ) : (
-          <Link className="navbar__link" to="login">
+          <h3 className="navbar__link" onClick={handleLogin} to="login">
             LOG IN
-          </Link>
+          </h3>
         )}
       </nav>
     </>
