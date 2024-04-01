@@ -5,14 +5,20 @@ import Head from "./components/Head/Head";
 import Foot from "./components/Foot/Foot";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
+import { useState } from "react";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
 
 function App() {
+  const [login, setLogin] = useState(false);
   return (
     <div className="app">
       <BrowserRouter>
-        <Head />
+        <Head status={login} setStatus={setLogin} />
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
         <Foot />

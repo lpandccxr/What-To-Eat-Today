@@ -1,0 +1,54 @@
+.inputForm {
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+
+  &__block {
+    width: 100%;
+  }
+
+  &__label {
+    font-size: 1rem;
+    display: inline-block;
+    width: 28%;
+    margin-right: 0.5rem;
+    text-align: end;
+  }
+  &__input {
+    font-family: inherit;
+    width: 45%;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    height: 2rem;
+    border: 1px solid black;
+    margin-right: 0.5rem;
+
+    &::placeholder {
+      color: rgb(174, 174, 174);
+    }
+  }
+  &__button-container {
+    width: 100%;
+    text-align: center;
+  }
+  &__button {
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-family: inherit;
+    width: 7rem;
+    height: 3.5rem;
+    margin-top: 2rem;
+    border: none;
+    outline: 2px solid rgb(90, 89, 89);
+    transition: all 0.2s;
+    &:active {
+      scale: 0.95;
+    }
+  }
+  &__status {
+    color: red;
+  }
+}
