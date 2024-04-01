@@ -1,0 +1,19 @@
+@use "../src/styles/typography" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+}
+
+.app {
+  width: 100%;
+  max-width: 1024px;
+}

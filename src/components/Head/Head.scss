@@ -1,0 +1,31 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  &__link {
+    font-weight: 600;
+    background: linear-gradient(to right, black, rgb(99, 99, 99)) no-repeat left
+      bottom;
+    background-size: 0 2px;
+    transition: background-size 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background-position: right bottom;
+      background-size: 100% 2px;
+    }
+    &:active {
+      color: rgb(99, 99, 99);
+    }
+  }
+
+  &__logo-link {
+    width: 20%;
+    text-align: center;
+  }
+  &__logo-img {
+    width: 90%;
+  }
+}
