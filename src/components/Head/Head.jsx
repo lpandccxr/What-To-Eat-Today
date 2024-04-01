@@ -1,21 +1,31 @@
+import { useEffect } from "react";
 import logo from "../../assets/logo/logo.png";
 import "./Head.scss";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function Head({ status, setStatus }) {
+  const token = sessionStorage.getItem("JWTtoken");
   const navigate = useNavigate();
+
   const handleLogout = () => {
     setStatus(false);
     sessionStorage.removeItem("JWTtoken");
   };
   const handleLogin = async () => {
-    const token = sessionStorage.getItem("JWTtoken");
     if (!token) {
       navigate("/login");
     } else {
       setStatus(true);
     }
   };
+
+  //check token status
+  useEffect(() => {
+    if (token) {
+      setStatus(true);
+    }
+  }, [token, setStatus]);
+
   return (
     <>
       <nav className="navbar">
