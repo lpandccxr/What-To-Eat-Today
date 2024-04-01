@@ -1,6 +1,6 @@
 import logo from "../../assets/logo/logo.png";
 import "./Head.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function Head({ status, setStatus }) {
   const navigate = useNavigate();
@@ -20,9 +20,14 @@ export default function Head({ status, setStatus }) {
     <>
       <nav className="navbar">
         {status ? (
-          <Link className="navbar__link" to="/profile">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "navbar__link navbar__link--active" : "navbar__link"
+            }
+            to="/profile"
+          >
             PROFILE
-          </Link>
+          </NavLink>
         ) : (
           <Link className="navbar__link" to="/signup">
             SIGN UP

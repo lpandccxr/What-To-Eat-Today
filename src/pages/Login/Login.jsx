@@ -13,14 +13,17 @@ export default function Login({ setLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/users/login`,
         formData
       );
       sessionStorage.setItem("JWTtoken", response.data.token);
-      setLoading(false);
-      setLogin(true);
-      navigate("/");
+      setTimeout(() => {
+        setLoading(false);
+        setLogin(true);
+        navigate("/");
+      }, 500);
     } catch (error) {
       alert("User/Name is wrong");
       console.log("Error at log in ", error);

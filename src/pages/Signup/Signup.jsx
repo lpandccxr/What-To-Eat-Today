@@ -128,7 +128,7 @@ export default function Signup() {
     } else {
       setGoodPw(true);
     }
-  });
+  }, [formData.password]);
 
   return (
     <>

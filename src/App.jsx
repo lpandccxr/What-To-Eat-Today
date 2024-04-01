@@ -1,11 +1,12 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
+//import components and pages
 import Head from "./components/Head/Head";
 import Foot from "./components/Foot/Foot";
 import Main from "./pages/Main";
-import Profile from "./pages/Profile";
-import { useState } from "react";
+import Profile from "./pages/Profile/Profile";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 

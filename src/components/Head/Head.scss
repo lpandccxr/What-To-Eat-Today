@@ -25,6 +25,12 @@
     &:active {
       color: rgb(99, 99, 99);
     }
+
+    &--active {
+      background: linear-gradient(to right, black, rgb(99, 99, 99)) no-repeat
+        bottom;
+      background-size: 100% 2px;
+    }
   }
 
   &__logo-link {
