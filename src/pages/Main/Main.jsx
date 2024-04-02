@@ -34,6 +34,22 @@ export default function Main() {
 
   const token = sessionStorage.getItem("JWTtoken");
 
+  const addRecord = async (name) => {
+    try {
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/users/add-record`,
+        { name: name },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log("Error at add record ", error);
+    }
+  };
+
   const handleRoll = async (e) => {
     e.preventDefault();
     if (food !== "") {
@@ -56,6 +72,7 @@ export default function Main() {
         setOptions(restaurantList);
       }
       setFood(response.data.name);
+      addRecord(response.data.name);
     } catch (error) {
       console.log("Error at get random food ", error);
     }
