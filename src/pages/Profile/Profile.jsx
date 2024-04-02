@@ -5,6 +5,38 @@ import { useEffect, useState } from "react";
 export default function Profile() {
   const token = sessionStorage.getItem("JWTtoken");
   const [user, setUser] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    country: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}/users/add-food`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setFormData({
+        name: "",
+        country: "",
+      });
+      alert(`${response.data.name} has been added`);
+    } catch (error) {
+      alert("Food is exist!");
+      console.log(error);
+    }
+  };
 
   const formatTime = (input) => {
     const date = new Date(input).toLocaleDateString("en-US");
@@ -42,6 +74,39 @@ export default function Profile() {
       <div className="profile__content">
         <p>{`Email: ${user.email}`}</p>
         <p>{`Last login: ${user.last_login}`}</p>
+
+        <div className="profile__add">
+          <h3>Add food to your list</h3>
+          <form className="profile__form" onSubmit={handleSubmit}>
+            <div className="profile__input-block">
+              <label className="profile__label">Food:</label>
+              <input
+                className="profile__input"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="eg. Pho"
+                autoComplete="off"
+                required
+              />
+            </div>
+            <div className="profile__input-block">
+              <label className="profile__label">Country:</label>
+              <input
+                type="text"
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
+                className="profile__input"
+                placeholder="Country which the food comes from"
+                autoComplete="off"
+                required
+              />
+            </div>
+            <button className="profile__button">Submit</button>
+          </form>
+        </div>
         {user.record ? (
           <div className="profile__record">
             <h3>{`< Record >`}</h3>
