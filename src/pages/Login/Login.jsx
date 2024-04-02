@@ -62,7 +62,7 @@ export default function Login({ setLogin }) {
         </div>
         <div className="inputForm__button-container">
           <button className="inputForm__button" type="submit">
-            {loading ? `loading..` : `Register`}
+            {loading ? `loading..` : `Log In`}
           </button>
         </div>
       </form>

@@ -5,7 +5,7 @@ import { useState } from "react";
 //import components and pages
 import Head from "./components/Head/Head";
 import Foot from "./components/Foot/Foot";
-import Main from "./pages/Main";
+import Main from "./pages/Main/Main";
 import Profile from "./pages/Profile/Profile";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";

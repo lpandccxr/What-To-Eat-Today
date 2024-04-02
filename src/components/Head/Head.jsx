@@ -10,6 +10,8 @@ export default function Head({ status, setStatus }) {
   const handleLogout = () => {
     setStatus(false);
     sessionStorage.removeItem("JWTtoken");
+    navigate("/");
+    window.location.reload();
   };
   const handleLogin = async () => {
     if (!token) {
