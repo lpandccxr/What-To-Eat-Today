@@ -86,8 +86,10 @@ export default function Main() {
         console.log("Error at getting user's info ", error);
       }
     };
-    getUserInfo();
-  }, []);
+    if (token) {
+      getUserInfo();
+    }
+  }, [token]);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -137,7 +139,7 @@ export default function Main() {
                 {list.map((item, index) => {
                   return <p key={index}>{`${item}`}</p>;
                 })}
-                <p>{`${food}`}</p>
+                <p style={{ fontWeight: "600" }}>{`${food}`}</p>
               </div>
             </div>
           ) : (
