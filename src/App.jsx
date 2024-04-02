@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
+//import components and pages
+import Head from "./components/Head/Head";
+import Foot from "./components/Foot/Foot";
+import Main from "./pages/Main/Main";
+import Profile from "./pages/Profile/Profile";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [login, setLogin] = useState(false);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <BrowserRouter>
+        <Head status={login} setStatus={setLogin} />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login setLogin={setLogin} />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+        <Foot />
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+export default App;
