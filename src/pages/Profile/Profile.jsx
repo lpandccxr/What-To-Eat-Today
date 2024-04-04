@@ -109,13 +109,13 @@ export default function Profile() {
         </div>
         {user.record ? (
           <div className="profile__record">
-            <h3>{`< Record >`}</h3>
+            <h3>{`< Recent Record >`}</h3>
             <div className="profile__item profile__item--top">
               <h4 className="profile__item-name">Food</h4>
               <h4>Time</h4>
             </div>
             {user.record.map((item, index) => {
-              while (index <= 10) {
+              while (index <= 4) {
                 return (
                   <div key={item.id} className="profile__item">
                     <span className="profile__item-name">{item.name}</span>

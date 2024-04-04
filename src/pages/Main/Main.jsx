@@ -67,12 +67,16 @@ export default function Main() {
           },
         }
       );
+      setFood(response.data.name);
       const restaurantList = response.data.restaurants;
+
       if (restaurantList.length > 0) {
         setOptions(restaurantList);
       }
-      setFood(response.data.name);
-      addRecord(response.data.name);
+
+      if (token) {
+        addRecord(response.data.name);
+      }
     } catch (error) {
       console.log("Error at get random food ", error);
     }
@@ -84,6 +88,26 @@ export default function Main() {
     setOptions([]);
   };
 
+  const handleUnlike = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_API_URL}/users/unlike-food/${food}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert(response.data);
+      setRoll(false);
+      setFood("");
+      setOptions([]);
+    } catch (error) {
+      console.log("Error at delete food from list ", error);
+    }
+  };
+
   useEffect(() => {
     const getUserInfo = async () => {
       try {
@@ -91,7 +115,7 @@ export default function Main() {
           `${import.meta.env.VITE_API_URL}/users/profile`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              authorization: `Bearer ${token}`,
             },
           }
         );
@@ -156,7 +180,9 @@ export default function Main() {
                 {list.map((item, index) => {
                   return <p key={index}>{`${item}`}</p>;
                 })}
-                <p style={{ fontWeight: "600" }}>{`${food}`}</p>
+                <p
+                  style={{ fontWeight: "600", marginTop: "0.5rem" }}
+                >{`${food}`}</p>
               </div>
             </div>
           ) : (
@@ -174,6 +200,13 @@ export default function Main() {
           <button className="main__reset" onClick={handleReset}>
             Reset
           </button>
+        )}
+        {token ? (
+          <button className="main__unlike " onClick={handleUnlike}>
+            X
+          </button>
+        ) : (
+          <></>
         )}
         <div className="main__restaurant">
           {options.map((option, index) => {

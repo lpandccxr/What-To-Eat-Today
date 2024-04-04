@@ -18,7 +18,7 @@ export default function Login({ setLogin }) {
         `${import.meta.env.VITE_API_URL}/users/login`,
         formData
       );
-      sessionStorage.setItem("JWTtoken", response.data.token);
+      await sessionStorage.setItem("JWTtoken", response.data.token);
       setTimeout(() => {
         setLoading(false);
         setLogin(true);
@@ -26,6 +26,7 @@ export default function Login({ setLogin }) {
       }, 500);
     } catch (error) {
       alert("User/Name is wrong");
+      setLoading(false);
       console.log("Error at log in ", error);
     }
   };
