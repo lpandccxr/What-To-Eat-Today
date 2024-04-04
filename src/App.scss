@@ -17,4 +17,7 @@ body {
   width: 100%;
   max-width: 425px;
   margin: auto;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding-top: 5rem;
 }
