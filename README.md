@@ -5,6 +5,8 @@ Please enter
 - "npm run dev" to run the client side
 - "npm start" to run the server side
 
+Please use the Food API as backed: https://github.com/lpandccxr/Food-API
+
 # Project Title
 
 What-To-Eat-Today
